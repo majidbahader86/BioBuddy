@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "national-cancer-institute-1PpyUZceg_I-unsplash.jpg",
+    "predicted_class": "jellyfish",
+    "confidence": 49.59,
+    "timestamp": "2025-06-06T13:46:29.358910"
+  },
+  {
+    "filename": "national-cancer-institute-1PpyUZceg_I-unsplash.jpg",
+    "predicted_class": "jellyfish",
+    "confidence": 49.59,
+    "timestamp": "2025-06-07T12:39:35.201146"
+  },
+  {
+    "filename": "national-cancer-institute-1PpyUZceg_I-unsplash.jpg",
+    "predicted_class": "jellyfish",
+    "confidence": 49.59,
+    "timestamp": "2025-06-07T14:32:37.667505"
+  },
+  {
+    "filename": "gel1.jpg",
+    "predicted_class": "beaker",
+    "confidence_percent": 31.9,
+    "timestamp": "2025-06-08T12:50:27.704041"
+  }
+]
