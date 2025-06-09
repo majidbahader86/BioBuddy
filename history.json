@@ -22,5 +22,29 @@
     "predicted_class": "beaker",
     "confidence_percent": 31.9,
     "timestamp": "2025-06-08T12:50:27.704041"
+  },
+  {
+    "filename": "gel1.jpg",
+    "predicted_class": "beaker",
+    "confidence_percent": 31.9,
+    "timestamp": "2025-06-09T20:34:20.843434"
+  },
+  {
+    "filename": "gel1.jpg",
+    "predicted_class": "beaker",
+    "confidence_percent": 31.9,
+    "timestamp": "2025-06-09T20:42:25.181527"
+  },
+  {
+    "filename": "national-cancer-institute-1PpyUZceg_I-unsplash.jpg",
+    "predicted_class": "jellyfish",
+    "confidence_percent": 51.51,
+    "timestamp": "2025-06-09T20:43:18.304234"
+  },
+  {
+    "filename": "national-cancer-institute-1PpyUZceg_I-unsplash.jpg",
+    "predicted_class": "jellyfish",
+    "confidence_percent": 51.51,
+    "timestamp": "2025-06-09T20:57:44.362687"
   }
 ]

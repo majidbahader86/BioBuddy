@@ -16,7 +16,6 @@ BioBuddy is a virtual assistant application designed to help newcomers in biolog
 /backend - FastAPI backend code
 /frontend - Frontend application code
 /uploads - Uploaded images and user files
-/images - Static images used in the app
 /static - Static frontend resources like HTML
 .env - Environment variables (not included in repo)
 history.json - Log file for predictions and interactions
@@ -52,7 +51,7 @@ uvicorn backend.main:app --reload
 
 **
 Run Frontend
-python frontend/app.py
+streamlit run frontend/app.py
 
 **
 How to Use
