@@ -1,93 +1,100 @@
-# BioBuddy
+# BioBuddy 🧬
 
 ## Project Description
-BioBuddy is a virtual assistant application designed to help newcomers in biology labs. It integrates image analysis using deep learning (ResNet50) and provides helpful information through a language model API to guide users through lab protocols and experiments efficiently.
+
+**BioBuddy** is a virtual lab assistant designed to support newcomers in biology labs. It helps with experimental protocols, reagent calculations, safety checks, and troubleshooting — all through a natural language interface powered by an LLM (Language Model).
+
+This version focuses on text-based assistance and optional document upload — no image classification is included in this version.
+
+---
 
 ## Features
-- Image upload and analysis for biological samples using ResNet50.
-- Virtual assistant powered by a language model to answer lab-related queries.
-- User-friendly frontend with backend API integration.
-- Keeps a history of predictions and interactions.
-- Supports file uploads and image management.
+
+- 🔬 Ask lab-related questions and get immediate responses
+- 🧠 Powered by a language model (LLM API)
+- 📎 Optional upload of lab-related files for future context
+- 🖥️ Simple, clean frontend using Streamlit
+- ⚙️ FastAPI backend for LLM interaction
+
+---
 
 ## Project Structure
 
 
-/backend - FastAPI backend code
-/frontend - Frontend application code
-/uploads - Uploaded images and user files
-/static - Static frontend resources like HTML
-.env - Environment variables (not included in repo)
-history.json - Log file for predictions and interactions
-.gitignore - Git ignore rules
-README.md - Project documentation
+
+/backend # FastAPI backend code
+/frontend # Streamlit frontend code
+/uploads # Folder for future file support
+.env # Environment variables (not in repo)
+README.md # Project documentation
+.gitignore # Git ignore rules
 
 
+---
 
-## Installation and Setup
+## Installation & Setup
 
-1. Clone the repository:
+1. **Clone the repository**
+
+```bash
 git clone https://github.com/majidbahader86/BioBuddy.git
+
 cd BioBuddy
 
+#Create and activate virtual environment
 
-2. Create a virtual environment and activate it:
 python3 -m venv venv
-source venv/bin/activate   # Linux
+source venv/bin/activate  # Linux/macOS
 
-3. Install required packages:
+# Install dependencies
+
 pip install -r requirements.txt
 
+Set up environment variables
 
-4. Set up environment variables:
-Create a .env file in the root directory.
-Add necessary keys such as API tokens or configuration variables.
+Create a .env file in the root folder and add:
 
-**Usage
+OPENAI_API_KEY=your_key_here
 
-**
-Run Backend
+Usage
+1. Run Backend
+
 uvicorn backend.main:app --reload
 
-**
-Run Frontend
+2. Run Frontend
+
 streamlit run frontend/app.py
 
-**
 How to Use
 
-Open the frontend app in your browser.
+    Open the Streamlit app in your browser.
 
-Upload images to analyze.
+    Type your lab-related question.
 
-Ask questions to the virtual assistant.
+    Optionally upload a file to support your query.
 
-View history of interactions.
+    Get real-time answers from the assistant.
 
-
-**
-API Documentation (Later)
-
-**
 Contributing
 
-Fork the repository.
+    Fork the repository
 
-Create a new branch (git checkout -b feature-branch).
+    Create a new branch: git checkout -b feature-branch
 
-Commit your changes (git commit -m "Add feature").
+    Make your changes
 
-Push to your branch (git push origin feature-branch).
+    Commit: git commit -m "Add feature"
 
-Open a Pull Request.
+    Push: git push origin feature-branch
 
-**
-Known Issues / TODO
+    Open a Pull Request
 
-Improve model accuracy.
+Future Plans
 
-Add more detailed API docs.
+    🔄 Integrate lab document parsing (PDFs, protocols)
 
-Enhance frontend UI.
+    🔐 Add user login and session-based history
 
-Implement user authentication.
+    📊 Support for reagent and buffer calculators
+
+    🧪 Protocol templates and visualization

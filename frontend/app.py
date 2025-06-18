@@ -9,7 +9,6 @@ st.title("🧬 BioBuddy Lab Assistant")
 
 # --- Section 1: Ask a Lab-Related Question ---
 st.header("🔬 Ask a Lab Question")
-
 question = st.text_input("Enter your question here:")
 
 if st.button("Get Answer"):
@@ -21,11 +20,9 @@ if st.button("Get Answer"):
                 response = requests.post(f"{API_URL}/ask/", json={"question": question})
                 if response.status_code == 200:
                     data = response.json()
-                    if "answer" in data:
-                        st.success("💡 Answer:")
-                        st.markdown(unescape(data["answer"]), unsafe_allow_html=True)
-                    else:
-                        st.warning("🤔 No answer returned.")
+                    answer = data.get("answer", "No answer returned.")
+                    st.success("💡 Answer:")
+                    st.markdown(unescape(answer), unsafe_allow_html=True)
                 else:
                     st.error(f"⚠️ API Error: {response.status_code}")
             except Exception as e:
@@ -33,58 +30,26 @@ if st.button("Get Answer"):
 
 st.markdown("---")
 
-# --- Section 2: Upload Image for Disease Detection ---
-st.header("🖼️ Upload Lab Image for Analysis")
+# --- Optional: Show History ---
+show_history = st.checkbox("Show Q&A History")
 
-st.markdown(
-    "Drag and drop or select an image file (JPG, JPEG, PNG) to classify lab images.\n\n"
-    "Maximum file size: 200MB"
-)
-
-uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
-
-if uploaded_file is not None:
-    st.image(uploaded_file, caption="🧾 Uploaded Image Preview", use_container_width=True)
-
-    if st.button("Classify Image"):
-        with st.spinner("🧠 Classifying image..."):
-            try:
-                files = {"file": (uploaded_file.name, uploaded_file, uploaded_file.type)}
-                response = requests.post(f"{API_URL}/upload-image/", files=files)
-                if response.status_code == 200:
-                    result = response.json()
-                    st.success(f"🧬 Prediction: **{result.get('predicted_class', 'N/A')}**")
-                    st.write(f"🔢 Confidence: **{result.get('confidence_percent', 'N/A')}%**")
-                else:
-                    st.error(f"⚠️ API Error: {response.status_code}")
-            except Exception as e:
-                st.error(f"❌ Failed to connect to API: {e}")
-
-    st.info(
-        "Note: This is a demo model using general image classification (ResNet50). "
-        "Future versions will support lab image analysis like gel bands and western blots."
-    )
-else:
-    st.info("📎 Please upload an image to enable prediction.")
-
-st.markdown("---")
-
-# --- Section 3: Option to show Prediction History ---
-if st.checkbox("Show Prediction History"):
-    st.header("🗂️ Prediction History")
+if show_history:
+    st.header("🗂️ Q&A History")
     try:
         response = requests.get(f"{API_URL}/history/")
         if response.status_code == 200:
             history = response.json()
             if not history:
-                st.info("📭 No prediction history found.")
+                st.info("📭 No history found.")
             else:
                 for record in reversed(history[-10:]):
-                    st.markdown(
-                        f"📌 **{record.get('filename', 'Unknown')}** → **{record.get('predicted_class', 'N/A')}** "
-                        f"with **{record.get('confidence_percent', 'N/A')}%** on `{record.get('timestamp', 'Unknown')}`"
-                    )
+                    if record.get("type") == "question":
+                        st.markdown(
+                            f"❓ **Q:** {record['question']}\n\n"
+                            f"💡 **A:** {record['answer']}\n\n"
+                            f"_at {record['timestamp']}_"
+                        )
         else:
-            st.error("⚠️ Failed to fetch prediction history.")
+            st.error("⚠️ Failed to fetch history.")
     except Exception as e:
         st.error(f"❌ Error connecting to API: {e}")
