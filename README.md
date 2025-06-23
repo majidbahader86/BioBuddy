@@ -108,55 +108,52 @@ These are real screenshots of BioBuddy responses and predictions:
 
 ---
 
-## ⚙️ How to Run
+## ⚙️ Installation & Setup
 
 ### Prerequisites
 
-
-## Installation & Setup
-
 - Python 3.8+
+- GWDG API Key
 
-1. **Clone the repository**
+### Setup Instructions
 
 ```bash
-git clone https://github.com/majidbahader/biobuddy.git
-
+# Clone the repository
+git clone https://github.com/majidbahader86/BioBuddy
 cd biobuddy
 
-#Create and activate virtual environment
-
+# Create and activate a virtual environment
 python3 -m venv venv
-source venv/bin/activate  # Linux
+source venv/bin/activate  # For Linux
 
 # Install dependencies
-
 pip install -r requirements.txt
 
-Set up environment variables
+Configure Environment Variables
 
-Create a .env file in the root folder and add:
+Create a .env file in the root folder:
 
-GWDG_API_KEY= gwdg_api_key
+GWDG_API_KEY=gwdg_api_key
 
-Usage
-1. Run Backend
+▶️ How to Use
+1. Run the backend:
 
 uvicorn backend.main:app --reload
 
-2. Run Frontend
+2. In a new terminal, run the frontend:
 
 streamlit run frontend/app.py
 
-How to Use
+3. Open your browser at:
 
-    Open the Streamlit app in your browser.
+http://localhost:8501
 
-    Type your lab-related question.
+    Enter a lab-related or HPC question
 
-    Optionally upload a file to support your query.
+    Optionally upload a lab-related image
 
-    Get real-time answers from the assistant.
+    Get answers or predictions in real time
+
 
 Contributing
 
@@ -172,12 +169,18 @@ Contributing
 
     Open a Pull Request
 
-Future Plans
+👤 Author
 
-    🔄 Integrate lab document parsing (PDFs, protocols)
+Majid Bahader
+Python Backend Developer | Molecular Biologist
+Intern at GWDG Göttingen
+Mentored by Prof. Julian Kunkel
 
-    🔐 Add user login and session-based history
 
-    📊 Support for reagent and buffer calculators
+🙏 Acknowledgments
 
-    🧪 Protocol templates and visualization
+    Professor Julian Kunkel — for domain guidance and mentorship
+
+    GWDG Academic Cloud — for providing LLM access and infrastructure
+
+    All open-source libraries that power this project
