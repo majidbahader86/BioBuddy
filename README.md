@@ -1,50 +1,83 @@
-# BioBuddy 🧬
+# 🧬 BioBuddy — AI Lab Assistant for Molecular Biology and HPC
 
 ## Project Description
 
-**BioBuddy** is a virtual lab assistant designed to support newcomers in biology labs. It helps with experimental protocols, reagent calculations, safety checks, and troubleshooting — all through a natural language interface powered by an LLM (Language Model).
+
+**BioBuddy** is an interactive lab assistant built with FastAPI and Streamlit. It supports researchers and students in biology and HPC environments by:
+
+- Answering lab-specific and HPC-related questions using a GWDG-hosted LLM
+- Providing experimental protocols in detail (e.g., gel electrophoresis, PCR), reagent calculations, safety checks, and troubleshooting
+- Classifying biological images using ResNet50
+- Supporting newcomers to Professor Julian Kunkel’s group and GWDG
+
+---
 
 This version focuses on text-based assistance and optional document upload — no image classification is included in this version.
 
 ---
 
-## Features
+## 🚀 Features
 
-- 🔬 Ask lab-related questions and get immediate responses
-- 🧠 Powered by a language model (LLM API)
-- 📎 Optional upload of lab-related files for future context
-- 🖥️ Simple, clean frontend using Streamlit
-- ⚙️ FastAPI backend for LLM interaction
+- 🔬 **AI-Powered Q&A** — Get detailed responses for bio lab protocols and HPC usage
+- 🧠 **LLM Integration** — Uses `meta-llama-3.1-8b-instruct` via the GWDG API
+- 🖼️ **Image Classification** — Classify uploaded images using ResNet50 (ImageNet-trained)
+- 📂 **Streamlit Frontend** — Simple, responsive UI with chat and history
+- ⚙️ **FastAPI Backend** — Robust backend for both text and image endpoints
+
+---
+
+## 📂 Folder Structure
+
+biobuddy/
+├── backend/
+│ └── main.py # FastAPI app
+├── frontend/
+│ └── app.py # Streamlit interface
+├── static/ # Screenshots & media
+├── requirements.txt # Project dependencies
+├── .env # API keys (not committed)
+├── README.md # Project documentation
+
+
+
+
+
+## 🧪 Technologies Used
+
+| Component     | Description                             |
+|---------------|-----------------------------------------|
+| **FastAPI**   | Backend API with image and text routes  |
+| **Streamlit** | Frontend UI for question input + upload |
+| **PyTorch**   | ResNet50 image classification           |
+| **GWDG API**  | LLM-based Q&A model (meta-llama-3.1)    |
+| **httpx**     | Async HTTP client for model calls       |
+| **PIL**       | Image processing for uploads            |
+
+
+
 
 ---
 
-## Project Structure
+## ⚙️ How to Run
 
+### Prerequisites
 
-
-/backend # FastAPI backend code
-/frontend # Streamlit frontend code
-/uploads # Folder for future file support
-.env # Environment variables (not in repo)
-README.md # Project documentation
-.gitignore # Git ignore rules
-
-
----
 
 ## Installation & Setup
+
+- Python 3.8+
 
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/majidbahader86/BioBuddy.git
+git clone https://github.com/majidbahader/biobuddy.git
 
-cd BioBuddy
+cd biobuddy
 
 #Create and activate virtual environment
 
 python3 -m venv venv
-source venv/bin/activate  # Linux/macOS
+source venv/bin/activate  # Linux
 
 # Install dependencies
 
@@ -54,7 +87,7 @@ Set up environment variables
 
 Create a .env file in the root folder and add:
 
-OPENAI_API_KEY=your_key_here
+GWDG_API_KEY= gwdg_api_key
 
 Usage
 1. Run Backend
@@ -75,6 +108,59 @@ How to Use
 
     Get real-time answers from the assistant.
 
+
+    ## 📸 Example Results
+
+These are real screenshots of BioBuddy responses and predictions:
+
+### 1. 1X TAE Buffer Preparation  
+📄 Protocol steps for preparing 1X TAE buffer for electrophoresis  
+![1X TAE Buffer Protocol](static/1X_TAE_buffer_protocol.png)
+
+---
+
+### 2. DNA Extraction Protocol  
+📄 Step-by-step guide for performing DNA extraction  
+![DNA Extraction Protocol](static/DNA_extraction_protocol.png)
+
+---
+
+### 3. Lustre in HPC  
+📄 Explanation of the Lustre file system for high-performance computing  
+![Lustre HPC](static/Lustre_HPC.png)
+
+---
+
+### 4. SLURM Job Submission  
+📄 BioBuddy explains how to submit jobs using SLURM with example scripts  
+![SLURM Job Submission](static/SLURM_job_submission.png)
+
+---
+
+### 5. Agarose Gel Electrophoresis  
+📄 Detailed lab protocol for performing gel electrophoresis  
+![Agarose Gel Electrophoresis](static/agarose_gel_electrophoresis.png)
+
+---
+
+### 6. Cell Culture Media Classification  
+🧪 Image classification using ResNet50 — predicted media flask from uploaded image  
+![Cell Culture Media Image Upload](static/cell_culture_media_imageUpload.png)
+
+---
+
+### 7. Key Skills for HPC  
+📄 Overview of skills required for a successful HPC career path  
+![Key Skills for HPC World](static/key_skills_for_HPC_World.png)
+
+---
+
+### 8. PCR (Polymerase Chain Reaction) Protocol  
+📄 Step-by-step explanation of PCR setup and cycling conditions  
+![Polymerase Chain Reaction](static/polymerase_chain_reaction.png)
+
+---
+
 Contributing
 
     Fork the repository
@@ -89,12 +175,19 @@ Contributing
 
     Open a Pull Request
 
-Future Plans
 
-    🔄 Integrate lab document parsing (PDFs, protocols)
 
-    🔐 Add user login and session-based history
+👤 Author
 
-    📊 Support for reagent and buffer calculators
+Majid Bahader
+Python Backend Developer | Molecular Biologist
+Intern at GWDG Göttingen
+Mentored by Prof. Julian Kunkel
 
-    🧪 Protocol templates and visualization
+🙏 Acknowledgments
+
+    Professor Julian Kunkel — for domain guidance and mentorship
+
+    GWDG Academic Cloud — for providing LLM access and infrastructure
+
+    Open-source tools that power this application
