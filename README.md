@@ -1,7 +1,6 @@
 # 🧬 BioBuddy — AI Lab Assistant for Molecular Biology and HPC
 
-## Project Description
-
+## 🧾 Project Description
 
 **BioBuddy** is an interactive lab assistant built with FastAPI and Streamlit. It supports researchers and students in biology and HPC environments by:
 
@@ -10,103 +9,94 @@
 - Classifying biological images using ResNet50
 - Supporting newcomers to Professor Julian Kunkel’s group and GWDG
 
----
-
-This version focuses on text-based assistance and optional document upload — no image classification is included in this version.
+> 🔎 **Note:** This version focuses on text-based assistance and optional document upload — the image classification feature is experimental.
 
 ---
 
 ## 🚀 Features
 
-- 🔬 **AI-Powered Q&A** — Get detailed responses for bio lab protocols and HPC usage
+- 🔬 **AI-Powered Q&A** — Get detailed responses for lab protocols and HPC usage
 - 🧠 **LLM Integration** — Uses `meta-llama-3.1-8b-instruct` via the GWDG API
-- 🖼️ **Image Classification** — Classify uploaded images using ResNet50 (ImageNet-trained)
-- 📂 **Streamlit Frontend** — Simple, responsive UI with chat and history
-- ⚙️ **FastAPI Backend** — Robust backend for both text and image endpoints
+- 🖼️ **Image Classification** — Identify uploaded lab-related images using ResNet50
+- 📂 **Streamlit Frontend** — Clean UI with chat history and image upload
+- ⚙️ **FastAPI Backend** — Handles both text questions and image classification
 
 ---
 
 ## 📂 Folder Structure
 
 biobuddy/
-├── backend/
-│ └── main.py # FastAPI app
-├── frontend/
-│ └── app.py # Streamlit interface
-├── static/ # Screenshots & media
-├── requirements.txt # Project dependencies
-├── .env # API keys (not committed)
+├── backend/ # FastAPI app (main.py)
+├── frontend/ # Streamlit app (app.py)
+├── static/ # Screenshots & uploaded media
+├── history.json # Chat history log
+├── requirements.txt # Python dependencies
 ├── README.md # Project documentation
+├── .env # API key file (not tracked)
+└── venv/ # Virtual environment (optional)
 
 
-
-
+---
 
 ## 🧪 Technologies Used
 
 | Component     | Description                             |
 |---------------|-----------------------------------------|
 | **FastAPI**   | Backend API with image and text routes  |
-| **Streamlit** | Frontend UI for question input + upload |
-| **PyTorch**   | ResNet50 image classification           |
-| **GWDG API**  | LLM-based Q&A model (meta-llama-3.1)    |
-| **httpx**     | Async HTTP client for model calls       |
-| **PIL**       | Image processing for uploads            |
-
-
-
+| **Streamlit** | Frontend UI for Q&A and uploads         |
+| **PyTorch**   | ResNet50 model for image classification |
+| **GWDG API**  | LLM-based Q&A model (LLaMA 3.1)         |
+| **httpx**     | Async HTTP requests to LLM API          |
+| **PIL**       | Image pre-processing and handling       |
 
 ---
 
-## ⚙️ How to Run
+## ⚙️ Installation & Setup
 
 ### Prerequisites
 
-
-## Installation & Setup
-
 - Python 3.8+
+- GWDG API Key
 
-1. **Clone the repository**
+### Setup Instructions
 
 ```bash
+# Clone the repository
 git clone https://github.com/majidbahader/biobuddy.git
-
 cd biobuddy
 
-#Create and activate virtual environment
-
+# Create and activate a virtual environment
 python3 -m venv venv
-source venv/bin/activate  # Linux
+source venv/bin/activate  # For Linux/Mac
+# .\venv\Scripts\activate   # For Windows
 
 # Install dependencies
-
 pip install -r requirements.txt
 
-Set up environment variables
+Configure Environment Variables
 
-Create a .env file in the root folder and add:
+Create a .env file in the root folder:
 
-GWDG_API_KEY= gwdg_api_key
+GWDG_API_KEY=your_gwdg_api_key
 
-Usage
-1. Run Backend
+▶️ How to Use
+1. Run the backend:
 
 uvicorn backend.main:app --reload
 
-2. Run Frontend
+2. In a new terminal, run the frontend:
 
 streamlit run frontend/app.py
 
-How to Use
+3. Open your browser at:
 
-    Open the Streamlit app in your browser.
+http://localhost:8501
 
-    Type your lab-related question.
+    Enter a lab-related or HPC question
 
-    Optionally upload a file to support your query.
+    Optionally upload a lab-related image
 
-    Get real-time answers from the assistant.
+    Get answers or predictions in real time
 
 
     ## 📸 Example Results
@@ -116,6 +106,7 @@ These are real screenshots of BioBuddy responses and predictions:
 ### 1. 1X TAE Buffer Preparation  
 📄 Protocol steps for preparing 1X TAE buffer for electrophoresis  
 ![1X TAE Buffer Protocol](static/1X_TAE_buffer_protocol.png)
+
 
 ---
 
@@ -160,34 +151,3 @@ These are real screenshots of BioBuddy responses and predictions:
 ![Polymerase Chain Reaction](static/polymerase_chain_reaction.png)
 
 ---
-
-Contributing
-
-    Fork the repository
-
-    Create a new branch: git checkout -b feature-branch
-
-    Make your changes
-
-    Commit: git commit -m "Add feature"
-
-    Push: git push origin feature-branch
-
-    Open a Pull Request
-
-
-
-👤 Author
-
-Majid Bahader
-Python Backend Developer | Molecular Biologist
-Intern at GWDG Göttingen
-Mentored by Prof. Julian Kunkel
-
-🙏 Acknowledgments
-
-    Professor Julian Kunkel — for domain guidance and mentorship
-
-    GWDG Academic Cloud — for providing LLM access and infrastructure
-
-    Open-source tools that power this application
