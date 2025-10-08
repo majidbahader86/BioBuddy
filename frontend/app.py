@@ -30,7 +30,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Load logo if available
+# Load logo 
 logo_path = "static/logo.png"  # Place your logo in static/logo.png
 if os.path.exists(logo_path):
     logo = Image.open(logo_path)

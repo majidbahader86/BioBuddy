@@ -34,9 +34,12 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 resnet50 = models.resnet50(pretrained=True)
 resnet50.eval()
 
-with open("imagenet_classes.txt", "r") as f:
+# Load ImageNet class names
+imagenet_path = os.path.join(os.path.dirname(__file__), "imagenet_classes.txt")
+with open(imagenet_path, "r") as f:
     imagenet_classes = [line.strip() for line in f.readlines()]
 
+# Define preprocessing steps
 preprocess = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
